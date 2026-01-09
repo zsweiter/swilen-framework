@@ -36,7 +36,7 @@ class Validator implements ValidatorContract, Arrayable
      */
     protected $validators = [
         Rule::ALPHA => \Swilen\Validation\Rules\Alpha::class,
-        // Rule::BEETWEN => \Swilen\Validation\Rules\Beetwen::class,
+        Rule::BETWEEN => \Swilen\Validation\Rules\Between::class,
         Rule::BOOLEAN => \Swilen\Validation\Rules\Boolean::class,
         Rule::DATE => \Swilen\Validation\Rules\Date::class,
         // Rule::DIFFERENT => \Swilen\Validation\Rules\Different::class,

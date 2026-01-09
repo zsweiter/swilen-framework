@@ -369,6 +369,8 @@ class Application extends Container implements ArthropodApplication, HttpApplica
     public function useEnvironment(string $env)
     {
         $this->instance('env', $env);
+        
+        return $this;
     }
 
     /**
@@ -458,7 +460,7 @@ class Application extends Container implements ArthropodApplication, HttpApplica
         }
 
         foreach ($this->bootstrappers as $bootstrap) {
-            $this->make($bootstrap)->puriyboot($this);
+            $this->make($bootstrap)->bootstrap($this);
         }
 
         $this->hasBeenBootstrapped = true;

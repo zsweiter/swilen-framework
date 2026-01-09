@@ -15,7 +15,7 @@ class Facades implements BootableService
      *
      * @return void
      */
-    public function puriyboot(Application $app)
+    public function bootstrap(Application $app)
     {
         Facade::flushFacadeInstances();
 

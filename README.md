@@ -1,6 +1,6 @@
 # Swilen Framework
 
-`v0.7.2-alpha`
+`v0.7.3-alpha`
 
 Fast, minimalist and flexible PHP framework inspired in [Laravel](https://laravel.com) and [Expressjs](https://expressjs.com)
 

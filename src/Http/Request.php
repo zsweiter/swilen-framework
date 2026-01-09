@@ -172,7 +172,7 @@ class Request extends SupportRequest implements \ArrayAccess
      */
     public function getMethod()
     {
-        if ($this->method !== null) {
+        if ($this->method != null) {
             return $this->method;
         }
 
@@ -185,11 +185,15 @@ class Request extends SupportRequest implements \ArrayAccess
         $method = $this->server->filter('HTTP_X_METHOD_OVERRIDE')
             ?: $this->server->filter('HTTP_X_HTTP_METHOD_OVERRIDE');
 
-        if (is_null($method) && !$method) {
+        if (empty($method) || !is_string($method)) {
             return $this->method;
         }
 
-        $method = strtoupper($method);
+        $method = strtoupper(trim($method));
+
+        if (!preg_match('/^[A-Z]+$/', $method)) {
+            return $this->method;
+        }
 
         if (in_array($method, $this->acceptMethodOverrides, true)) {
             return $this->method = $method;

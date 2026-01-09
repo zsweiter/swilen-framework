@@ -29,7 +29,7 @@ class EnvironmentVars implements BootableService
      *
      * @return void
      */
-    public function puriyboot(Application $app)
+    public function bootstrap(Application $app)
     {
         $this->app = $app;
 

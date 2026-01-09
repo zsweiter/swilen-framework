@@ -5,7 +5,7 @@ namespace Swilen\Validation;
 final class Rule
 {
     public const ALPHA      = 'alpha';
-    public const BEETWEN    = 'beetwen';
+    public const BETWEEN    = 'between';
     public const BOOLEAN    = 'boolean';
     public const DATE       = 'date';
     public const DIFFERENT  = 'different';

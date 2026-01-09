@@ -278,6 +278,10 @@ class Connection implements ConnectionContract
      */
     public function unprepared($query)
     {
+        if (empty($query) || !is_string($query)) {
+            throw new \InvalidArgumentException('Query must be a non-empty string');
+        }
+
         return $this->handle($query, [], function ($query) {
             $this->recordsHaveBeenModified(
                 $change = $this->getPdo()->exec($query) !== false
@@ -573,7 +577,10 @@ class Connection implements ConnectionContract
         try {
             $this->close();
         } catch (\Throwable $e) {
-            throw new \PDOException('Failed to close database: '.$e->getMessage(), $e->getCode(), $e->getPrevious());
+            // Log error but don't throw in destructor to prevent fatal errors
+            if (function_exists('error_log')) {
+                error_log('Database connection close error: ' . $e->getMessage());
+            }
         }
     }
 }
